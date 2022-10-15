@@ -1,14 +1,16 @@
 const app = Vue.createApp({
     data() {
         return {
-            firstName: "John",
-            lastName: "Wick",
-            email:"Wick@john.com",
-            gender:"male",
+            name: "John",
+            gender: "male",
+            shadow: "pink",
             picture: 'https://randomuser.me/api/portraits/men/10.jpg',
-            cell: "046-8924-705",
-            age: 30,
-            btntxt:"Flush"
+            combination: "Comp-Science",
+            description: "Hello world",
+            btntxt: "Flush",
+            enjoyment: "50%",
+            informative: "20%",
+            hatefull: "60%"
         }
     },
     methods: {
@@ -18,15 +20,14 @@ const app = Vue.createApp({
 
             this.btntxt = "Loading"
             setTimeout(() => {
-                this.picture= results[0].picture.large,
-                this.firstName= results[0].name.first,
-                this.lastName= results[0].name.last,
-                this.email=results[0].email,
-                this.gender=results[0].gender,
-                this.cell = results[0].cell,
-                this.age = results[0].dob.age
-                this.btntxt = "Flush"
+                this.picture = results[0].picture.large,
+                    this.name = results[0].name.first + " " + results[0].name.last,
+                    this.gender = results[0].gender,
+                    this.btntxt = "Flush";
+                if (this.gender == "male") this.shadow = "blue"
+                else if (this.gender == "female") this.shadow = "pink"
             }, 500)
+
         },
 
 

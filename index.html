@@ -1,53 +1,56 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test</title> 
+    <title>Explore Catherians</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3.0.5"></script>
+</head>
 
-  </head>
-  
-  <body>
+<body>
     <input id="slider" class="customSlider" type="checkbox" checked>
-    
-    <div class="wrapper">
+
+    <div id="app" class="wrapper">
         <div class="top-icons">
             <i class="fas fa-long-arrow-alt-left"></i>
             <i class="fas fa-ellipsis-v"></i>
         </div>
-        
+
         <div class="profile">
-            <img src="https://images.unsplash.com/photo-1484186139897-d5fc6b908812?ixlib=rb-0.3.5&s=9358d797b2e1370884aa51b0ab94f706&auto=format&fit=crop&w=200&q=80%20500w" class="thumbnail">
-            <h3 class="name">Beverly Little</h3>
-            <p class="title">Javascript Developer</p>
-            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aliquam aliquid porro!</p>
-            <button type="button" class="btn">Hire Me</button>
+            <img :src="picture" :class="shadow">
+            <h3 class="name">{{name}}</h3>
+            <p :class="gender">{{combination}}</p>
+            <p class="description">{{description}}</p>
+            <button type="button" class="btn" v-on:click="getUser()">{{btntxt}}</button>
         </div>
-        
+
         <div class="social-icons">
             <div class="icon">
                 <a href="/"><i class="fab fa-dribbble"></i></a>
-                <h4>12.8k</h4>
-                <p>Followers</p>
+                <h4>{{enjoyment}}</h4>
+                <p>Enjoyment</p>
             </div>
-            
+
             <div class="icon">
                 <a href="#"><i class="fab fa-behance"></i></a>
-                <h4>12.8k</h4>
-                <p>Followers</p>
+                <h4>{{informative}}</h4>
+                <p>Informative</p>
             </div>
-            
+
             <div class="icon">
                 <a href="#"><i class="fab fa-twitter"></i></a>
-                <h4>12.8k</h4>
-                <p>Followers</p>
+                <h4>{{hatefull}}</h4>
+                <p>Hatefull</p>
             </div>
         </div>
     </div>
 
-   
-  </body>
+    <script src="app.js"></script>
+</body>
+
 </html>
