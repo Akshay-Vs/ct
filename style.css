@@ -2,6 +2,10 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+	user-select: none;
 }
 
 body {
@@ -16,6 +20,7 @@ body {
 	flex-direction: column;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 100%;
+	overflow: hidden;
 }
 
 .bg {
@@ -48,6 +53,13 @@ body {
 	box-shadow: 0 14px 40px rgba(0, 0, 0, 0.31);
 }
 
+.cpyright{
+	color: steelblue;
+	font-weight: 500;
+	font-size: 10px;
+	margin: 20px;
+}
+
 @media only screen and (max-width: 600px) {
 	.wrapper {
 		width: 100%;
@@ -64,6 +76,7 @@ body {
 		background: #31394d;
 	}
 }
+
 
 .wrapper .top-icons i {
 	color: #08091164;
@@ -192,6 +205,10 @@ body {
 	margin-right: auto;
 	border-radius: 70px;
 	box-shadow: 0 13px 26px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .16);
+}
+
+.wrapper .profile .btn ::after{
+	box-shadow: 5 13px 26px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .16);
 }
 
 .wrapper .profile #female{
