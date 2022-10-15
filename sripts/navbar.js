@@ -1,4 +1,4 @@
-var navState = false;
+let navState = false;
 
 function openNav() {
     document.getElementById("mySidenav").style.display = "block";

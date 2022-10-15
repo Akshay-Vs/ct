@@ -10,33 +10,48 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3.0.5"></script>
     <script src="../sripts/navbar.js"></script>
+    <script src="../join/join.js"></script>
 </head>
 
 <body class="bg">
     <input id="slider" class="customSlider" type="checkbox" checked>
     <div class="wrapper">
-        <h1 style="color:#9e9e9e;" align="center">Enter credentials</h1><br>
-        <div class="user-box">
-            <input type="text" id="description" required="My project">
-            <label>Enter Your Full Name</label>
-        </div>
+        <form>
+            <h1 style="color:#9e9e9e;" align="center">Enter credentials</h1><br>
+            <div class="user-box">
+                <input type="text" id="name" required="My project">
+                <label>Enter Your Full Name</label>
+            </div>
 
-        <div class="user-box">
-            <input type="email" id="description" required="My project">
-            <label>Enter Your Email Address</label>
-        </div>
+            <div class="user-box">
+                <input type="email" id="email" required="My project">
+                <label>Enter Your Email Address</label>
+            </div>
 
-        <div class="user-box">
-            <input type="text" id="description" required="My project">
-            <label>Describe Your Profile</label>
-        </div>
+            <div class="user-box">
+                <input type="text" id="description" required="My project">
+                <label>Describe Your Profile</label>
+            </div>
 
-        <div class="user-box">
-            <input type="number" min="2021" value="2021" id="description" required="My project">
-            <label>Enter Batch Year</label>
-        </div>
+            <div class="user-box">
+                <input type="number" min="2021" value="2021" id="year" required="My project">
+                <label>Enter Batch Year</label>
+            </div>
+
+            <div class="user-box">
+                <label>Select Your Gender</label>
+            </div>
+            <div class="check-box" id="radio-gender"><br>
+                <input type="radio" name="gender" id="gender-male"> Male<br>
+                <input type="radio" name="gender" id="gender-female"> Female<br>
+            </div>
+
+
+            <div class="btn" id="submit" v-on:click="getUser()" type="submit">Next</div>
+        </form>
     </div>
 </body>
 
