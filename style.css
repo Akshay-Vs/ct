@@ -51,26 +51,24 @@ body {
 @media only screen and (max-width: 600px) {
 	.wrapper {
 		width: 100%;
-		height: vh;
-		background: #31394d;
+		height: 100%;
+		background: #fdfeff;
 		transition: background 0.6s ease;
 		border-radius: 0px;
 		padding: 20px 20px 20px 20px;
-		box-shadow:none;
-		margin: 40px;
+		box-shadow: none;
+		
 	}
 
-	.bg {
+	.bg{
 		background: #31394d;
-	}
-
-	#nav{
-		transform: translateY(30px)
 	}
 }
 
 .wrapper .top-icons i {
 	color: #08091164;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
 }
 
 .wrapper .top-icons i:nth-of-type(1) {
