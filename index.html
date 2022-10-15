@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
     <title>Explore Catherians</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
@@ -19,14 +19,16 @@
 
     <div id="app" class="wrapper">
         <div class="top-icons">
-            <i class="fas fa-ellipsis-v" onclick="toogleNav()"></i>
+            <i class="fas fa-ellipsis-v" id="nav" onclick="toogleNav()"></i>
+
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a href="" id="navbtn">About</a>
-                <a href="join/" id="navbtn">Join</a>
+                <a id="navbtn" onclick="window.location.replace('join/');">Join</a>
                 <a href="#" id="navbtn">Report</a>
                 <a href="#" id="navbtn">Report Bug</a>
-                <a href="#" id="navbtn">Contact</a>
+                <a href="#" id="navbtn">Contact</a><br><br><br><br><br><br>
+                <h5 style="color:#639ff9" href="#" >A concept by Akshay Vs</h5>
               </div>
         </div>
 

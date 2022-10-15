@@ -4,12 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Explore Catherians</title>
+    <title>Join Catherians: Credentials</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://unpkg.com/vue@3.0.5"></script>
-
-    <script src="sripts/navbar.js"></script>
+    <script src="../sripts/navbar.js"></script>
 </head>
+
+<body class="bg">
+    <input id="slider" class="customSlider" type="checkbox" checked>
+    <div class="wrapper">
+        <h1 style="color:#9e9e9e;" align="center">Enter credentials</h1><br>
+        <div class="user-box">
+            <input type="text" id="description" required="My project">
+            <label>Enter Your Full Name</label>
+        </div>
+
+        <div class="user-box">
+            <input type="email" id="description" required="My project">
+            <label>Enter Your Email Address</label>
+        </div>
+
+        <div class="user-box">
+            <input type="text" id="description" required="My project">
+            <label>Describe Your Profile</label>
+        </div>
+
+        <div class="user-box">
+            <input type="number" min="2021" value="2021" id="description" required="My project">
+            <label>Enter Batch Year</label>
+        </div>
+    </div>
+</body>
+
+</html>
