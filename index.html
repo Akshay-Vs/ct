@@ -10,15 +10,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3.0.5"></script>
+
+    <script src="sripts/navbar.js"></script>
 </head>
 
-<body>
+<body class="bg">
     <input id="slider" class="customSlider" type="checkbox" checked>
 
     <div id="app" class="wrapper">
         <div class="top-icons">
-            <i class="fas fa-long-arrow-alt-left"></i>
-            <i class="fas fa-ellipsis-v"></i>
+            <i class="fas fa-ellipsis-v" onclick="toogleNav()"></i>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="" id="navbtn">About</a>
+                <a href="join/" id="navbtn">Join</a>
+                <a href="#" id="navbtn">Report</a>
+                <a href="#" id="navbtn">Report Bug</a>
+                <a href="#" id="navbtn">Contact</a>
+              </div>
         </div>
 
         <div class="profile">
@@ -26,23 +35,23 @@
             <h3 class="name">{{name}}</h3>
             <p :class="gender">{{combination}}</p>
             <p class="description">{{description}}</p>
-            <button type="button" class="btn" v-on:click="getUser()">{{btntxt}}</button>
+            <button type="button" class="btn" :id="gender" v-on:click="getUser()">{{btntxt}}</button>
         </div>
 
         <div class="social-icons">
-            <div class="icon">
+            <div class="icon" :id="shadow">
                 <a href="/"><i class="fab fa-instagram"></i></a>
                 <h4>{{enjoyment}}</h4>
                 <p>Enjoyment</p>
             </div>
 
-            <div class="icon">
+            <div class="icon" :id="shadow">
                 <a href="#"><i class="fab fa-snapchat"></i></a>
                 <h4>{{informative}}</h4>
                 <p>Informative</p>
             </div>
 
-            <div class="icon">
+            <div class="icon" :id="shadow">
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <h4>{{hatefull}}</h4>
                 <p>Hatefull</p>

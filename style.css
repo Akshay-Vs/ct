@@ -18,17 +18,35 @@ body {
 	font-size: 100%;
 }
 
+.bg {
+	background: linear-gradient(-67deg,  #6452e9, #639ff9,  #c90a6d, #ff48a0);
+	background-size: 400% 400%;
+	animation: gradient 20s both infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
 .wrapper {
-	width: 320px;
-	height: 540px;
+	width: 370px;
+	height: 580px;
 	background: #fdfeff;
 	transition: background 0.6s ease;
 	border-radius: 10px;
 	padding: 20px 20px 20px 20px;
-	box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
+	box-shadow: 0 14px 40px rgba(0, 0, 0, 0.31);
 }
-
-
 
 @media only screen and (max-width: 600px) {
 	.wrapper {
@@ -47,7 +65,9 @@ body {
 }
 
 .wrapper .top-icons i {
-	color: #080911;
+	color: #08091164;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
 }
 
 .wrapper .top-icons i:nth-of-type(1) {
@@ -171,7 +191,16 @@ body {
 	margin-right: auto;
 	border-radius: 70px;
 	box-shadow: 0 13px 26px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .16);
+}
+
+.wrapper .profile #female{
 	background: linear-gradient(to bottom right, #c90a6d, #ff48a0);
+	transition: 1s;
+}
+
+.wrapper .profile #male{
+	background: linear-gradient(to bottom right, #6452e9, #639ff9);
+	transition: 1s;
 }
 
 .wrapper .social-icons {
@@ -197,17 +226,30 @@ body {
 	box-shadow: 0 13px 26px rgba(0, 0, 0, .2), 0 3px 6px rgba(0, 0, 0, .2);
 }
 
-.wrapper .social-icons .icon:nth-of-type(1) a {
-	background: linear-gradient(to bottom right, #c90a6d, #ff48a0);
-}
-
-.wrapper .social-icons .icon:nth-of-type(2) a {
+.wrapper .social-icons #blue:nth-of-type(1) a {
 	background: linear-gradient(to bottom right, #5e5aec, #3f9efc);
 }
 
-.wrapper .social-icons .icon:nth-of-type(3) a {
+.wrapper .social-icons #blue:nth-of-type(2) a {
+	background: linear-gradient(to bottom right, #5e5aec, #3f9efc);
+}
+
+.wrapper .social-icons #blue:nth-of-type(3) a {
 	background: linear-gradient(to bottom right, #6452e9, #639ff9);
 }
+
+.wrapper .social-icons #pink:nth-of-type(1) a {
+	background: linear-gradient(to bottom right, #c90a6d, #3f9efc);
+}
+
+.wrapper .social-icons #pink:nth-of-type(2) a {
+	background: linear-gradient(to bottom right, #c90a6d, #6452e9);
+}
+
+.wrapper .social-icons #pink:nth-of-type(3) a {
+	background: linear-gradient(to bottom right, #c90a6d, #639ff9);
+}
+
 
 .wrapper .social-icons .icon h4 {
 	color: #080911;
@@ -298,3 +340,75 @@ body {
 .customSlider:checked~.wrapper .icon p {
 	color: #666b7d;
 }
+
+#left{
+	float: right
+}
+
+/*****************************Sidenav*****************************/
+
+
+.sidenav {
+	display: none;
+	height: 100%;
+	width: 250px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: rgba(17, 17, 17, 0.43);
+	overflow-x: hidden;
+	padding-top: 60px;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(16px);
+	text-align: center;
+  }
+  
+  .sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 27px;
+	font-weight: bold;
+	color: #9e9e9e;
+	display: block;
+	margin: 10px
+  }
+  
+  .sidenav #navbtn {
+	background: transparent;
+	border-radius: 10px 0 10px;
+	animation: blink 7s linear infinite;
+  }
+
+  @keyframes blink {
+	0%{
+		box-shadow: 0px 0px 8px steelblue;
+	}
+	30%{
+		box-shadow: 0px 0px 20px steelblue;
+	}
+	50%{
+		box-shadow: 0px 0px 0px steelblue;
+	}
+	80%{
+		box-shadow: 6px 0px 13px steelblue;
+	}
+	90%{
+		box-shadow: 0px 15 5px 5px steelblue;
+	}
+	100%{
+		box-shadow: 0px 0px 8px steelblue;
+	}
+  }
+
+  .sidenav a:hover {
+	color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+  }
