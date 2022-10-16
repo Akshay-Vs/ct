@@ -24,7 +24,7 @@ $(document).ready(function () {
             setCookies("email", email, 30);
             setCookies("year", year, 30);
             setCookies("gender", gender(), 30);
-            window.location.replace('/Catherians/join/setup2/');
+            window.location.replace('/Catheriens/join/setup2/');
         }
     })
 
