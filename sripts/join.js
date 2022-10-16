@@ -53,6 +53,24 @@ $(document).ready(function () {
         }
     });
 
+    $('#next3').click(function () {
+        instagram = $("#profile1").val();
+        snapchat = $("#profile2").val();
+        twitter = $("#profile3").val();
+        enjoyment = $("#enj").val();
+        informative = $("#inf").val();
+        hatefull = $("#htf").val();
+        
+        setCookies("instagram", instagram, 30);
+        setCookies("snapchat", snapchat, 30);
+        setCookies("twitter", twitter, 30);
+        setCookies("enjoyment",enjoyment, 30);
+        setCookies("informative", informative, 30);
+        setCookies("Hatfull",hatefull,30);
+
+        window.location.replace('/Catheriens/join/setup4')
+    })
+
     //cookies
     function setCookies(name, value, duration) {
         const date = new Date();

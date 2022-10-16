@@ -40,16 +40,16 @@
             <h5 style="color:#639ff9;margin: 7px; font-size: 13px">Rate Your School Experience</h5>
             <div id="app" class="ui">
                 <div class="slider">
-                    <input type="range" min="0" max="100" step="0" v-model="enjoyment"/>
-                    <label contenteditable="true" id="enj-slider">Enjoyment {{enjoyment}}%</label>
+                    <input id="enj" type="range" min="0" max="100" step="0"  v-model="enjoyment"/>
+                    <label contenteditable="true">Enjoyment {{enjoyment}}%</label>
                 </div>
                 <div class="slider">
-                    <input type="range" min="0" max="100" step="0" v-model="informative"/>
-                    <label contenteditable="true" id="enj-slider">Informative {{informative}}%</label>
+                    <input id="inf" type="range" min="0" max="100" step="0" v-model="informative"/>
+                    <label contenteditable="true">Informative {{informative}}%</label>
                 </div>
                 <div class="slider">
-                    <input type="range" min="0" max="100" step="0" v-model="hatefull"/>
-                    <label contenteditable="true" id="enj-slider">Hatefull {{hatefull}}%</label>
+                    <input id="htf" type="range" min="0" max="100" step="0" v-model="hatefull"/>
+                    <label contenteditable="true" id="htf">Hatefull {{hatefull}}%</label>
                 </div>
               </div>
             <br>
