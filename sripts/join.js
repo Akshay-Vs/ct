@@ -46,10 +46,10 @@ $(document).ready(function () {
             alert("Private keys do not match");
         } else {
             setCookies("combination", combination(), 30);
-            deleteCookies("privateKey");
-            deleteCookies("confirmKey");
+            setCookies("privateKey", privateKey, 30)
             console.log(document.cookie);
-            console.log(getCookies("userName"));
+            console.log(getCookies("email"));
+            window.location.replace('/Catheriens/join/setup3/');
         }
     });
 
