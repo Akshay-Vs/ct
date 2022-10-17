@@ -11,6 +11,7 @@ const app = Vue.createApp({
             enjoyment: "50%",
             informative: "20%",
             hatefull: "60%",
+            check: "null",
             verified: "developer"
         }
     },

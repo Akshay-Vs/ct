@@ -123,6 +123,10 @@ body {
 	bottom: 12.7em;
 }
 
+.wrapper .profile .null{
+	opacity: 0;
+}
+
 .wrapper .profile .check i {
 	position: relative;
 	display: inline-block;
@@ -135,6 +139,7 @@ body {
 	left: 25px;
 	color: #e9eff6
   }
+
 .wrapper .profile .check #pink{
 	color: #fff;
 	width: 20px;

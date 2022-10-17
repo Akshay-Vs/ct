@@ -29,14 +29,16 @@
                 <a href="#" id="navbtn">Report</a>
                 <a href="#" id="navbtn">Report Bug</a>
                 <a href="#" id="navbtn">Contact</a><br><br><br><br>
-                <div class="cpyright" align="center">  Powered by <a align="center" class='cpyright' href="https://github.com/Akshay-Vs/Catheriens">GitHub</a></div>
-              </div>
+                <div class="cpyright" align="center"> Powered by <a align="center" class='cpyright'
+                        href="https://github.com/Akshay-Vs/Catheriens">GitHub</a></div>
+            </div>
         </div>
 
         <div class="profile">
             <img :src="picture" :class="shadow">
-            <div class="check">
+            <div :class="check">
                 <i class="fas fa-check" :id="shadow" :title="verified"></i>
+                </script>
             </div>
             <h3 class="name">{{name}}</h3>
             <p :class="gender">{{combination}}</p>
@@ -65,10 +67,11 @@
         </div>
     </div>
 
-    <footer>    
+    <footer>
         <div class="cpyright">
-        &copy 2022 Akshay-Vs
-    </div></footer>
+            &copy 2022 Akshay-Vs
+        </div>
+    </footer>
     <script src="app.js"></script>
 
 </body>
