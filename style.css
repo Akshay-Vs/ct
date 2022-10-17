@@ -131,13 +131,26 @@ body {
 	position: relative;
 	display: inline-block;
 	margin-top: 20px;
+	z-index: 2;
   }
   
   .wrapper .profile .check i[title]:hover::after {
 	content: attr(title);
 	position: absolute;
 	left: 25px;
-	color: #e9eff6
+	color: #e9eff6;
+	z-index: 1;
+	animation: title 200ms linear 1 
+  }
+  @keyframes title{
+	0%{
+		opacity:0;
+		z-index:1;
+	}
+	50%{
+		opacity: 10%
+	}
+
   }
 
 .wrapper .profile .check #pink{
