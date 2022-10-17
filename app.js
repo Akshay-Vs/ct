@@ -1,16 +1,17 @@
 const app = Vue.createApp({
     data() {
         return {
-            name: "John",
+            name: "Akshay Vs",
             gender: "male",
-            shadow: "pink",
-            picture: 'https://randomuser.me/api/portraits/men/10.jpg',
+            shadow: "blue",
+            picture: 'profile.jpg',
             combination: "Comp-Science",
-            description: "Hello world",
+            description: "Machine et trois personnes",
             btntxt: "Flush",
             enjoyment: "50%",
             informative: "20%",
-            hatefull: "60%"
+            hatefull: "60%",
+            verified: "developer"
         }
     },
     methods: {

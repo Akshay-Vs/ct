@@ -119,11 +119,23 @@ body {
 
 .wrapper .profile .check {
 	position: absolute;
-	right: 5em;
+	right: 6.3em;
 	bottom: 12.7em;
 }
 
 .wrapper .profile .check i {
+	position: relative;
+	display: inline-block;
+	margin-top: 20px;
+  }
+  
+  .wrapper .profile .check i[title]:hover::after {
+	content: attr(title);
+	position: absolute;
+	left: 25px;
+	color: #e9eff6
+  }
+.wrapper .profile .check #pink{
 	color: #fff;
 	width: 20px;
 	height: 20px;
@@ -132,6 +144,17 @@ body {
 	text-align: center;
 	border-radius: 100%;
 	background: linear-gradient(to bottom right, #c90a6d, #ff48a0);
+}
+
+.wrapper .profile .check #blue{
+	color: #fff;
+	width: 20px;
+	height: 20px;
+	font-size: 12px;
+	line-height: 20px;
+	text-align: center;
+	border-radius: 100%;
+	background: linear-gradient(to bottom right,   #6452e9, #639ff9);
 }
 
 .wrapper .profile .pink {

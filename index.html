@@ -35,6 +35,9 @@
 
         <div class="profile">
             <img :src="picture" :class="shadow">
+            <div class="check">
+                <i class="fas fa-check" :id="shadow" :title="verified"></i>
+            </div>
             <h3 class="name">{{name}}</h3>
             <p :class="gender">{{combination}}</p>
             <p class="description">{{description}}</p>
