@@ -29,10 +29,7 @@ const app = Vue.createApp({
                 if (this.gender == "male") this.shadow = "blue"
                 else if (this.gender == "female") this.shadow = "pink"
             }, 500)
-
         },
-
-
     }
 })
 
