@@ -32,9 +32,9 @@ const app = Vue.createApp({
                     this.check = "null";
                 if (this.gender == "male") this.shadow = "blue"
                 else if (this.gender == "female") this.shadow = "pink";
-                    this.twitter = "https://twitter.com/"+this.username,
-                    this.snapchat = "https://snapchat.com/"+this.username,
-                    this.instagram = "https://www.instagram.com/"+this.username;
+                    this.twitter = "https://twitter.com/"+this.name,
+                    this.snapchat = "https://snapchat.com/"+this.name,
+                    this.instagram = "https://www.instagram.com/"+this.name;
             }, 500)
         },
     }
