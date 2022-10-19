@@ -26,6 +26,7 @@ const app = Vue.createApp({
                     this.name = results[0].name.first + " " + results[0].name.last,
                     this.gender = results[0].gender,
                     this.btntxt = "Flush";
+                    this.check = "null"
                 if (this.gender == "male") this.shadow = "blue"
                 else if (this.gender == "female") this.shadow = "pink"
             }, 500)
