@@ -45,10 +45,13 @@ $(document).ready(function () {
         else if (privateKey != confirmKey) {
             alert("Private keys do not match");
         } else {
+            encryptedKey = CryptoJS.AES.encrypt(privateKey, privateKey);
+            setCookies("privateKey", encryptedKey, 30);
             setCookies("combination", combination(), 30);
             setCookies("privateKey", privateKey, 30)
             console.log(document.cookie);
             console.log(getCookies("email"));
+            console.log(encryptedKey);
             window.location.replace('/Catheriens/join/setup3/');
         }
     });
@@ -72,7 +75,9 @@ $(document).ready(function () {
     });
 
     $('#upload').click(function () {
-        console.log("Upload")
+
+        // Upload Image 
+
         var element = document.getElementById("file-upload")
         var image = element.src
         //window.open(image)
@@ -87,29 +92,34 @@ $(document).ready(function () {
         reader.readAsDataURL(file);
         reader.onloadend = function () {
             var raw = reader.result.replace("data:image/jpeg;base64,", "")
-
-
-            var settings = {
-                "url": `https://api.github.com/repos/Erric-Muller/Test/contents/Users/User 3456/Profile/main.png`,
-                "method": "PUT",
-                "timeout": 0,
-                "headers": {
-                    "Authorization": "Bearer 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",
-                    "Content-Type": "application/json"
-                },
-                "data": JSON.stringify({
-                    "message": "Create",
-                    "content": raw
-                }),
-            };
-
-            $.ajax(settings).done(function (responsecode, statuscode, header) {
-                console.log(statuscode);
-                console.log(responsecode);
-                console.log(header.status);
-            });
-
+            uploadData(raw, `User ${userID}/profile.png`)
         }
+
+        // Upload Data
+        
+        var userID = 10001;
+        setCookies("userID", userID, 365);
+        data = `
+                "userName": "${getCookies("userName")}",
+                "description": "${getCookies("description")}",
+                "email": "${getCookies("email")}",
+                "year": "${getCookies("year")}",
+                "gender": "${getCookies("gender")}",
+                "combination": "${getCookies("combination")}",
+                "informative": "${getCookies("informative")}",
+                "enjoyment": "${getCookies("enjoyment")}",
+                "hatefull": "${getCookies("hatefull")}",
+                "instagram": "${getCookies("instagram")}",
+                "snapchat": "${getCookies("snapchat")}",
+                "twitter": "${getCookies("twitter")}",
+                "privateKey": "${getCookies("privateKey")}",
+                "encryptedKey": "${getCookies("encryptedKey")}",
+                "UserID": ${userID}`;
+
+        data = btoa(data);
+        console.log(data)
+        uploadData(data, `User ${userID}/data.json`)
+
     })
 
     //cookies
@@ -125,14 +135,53 @@ $(document).ready(function () {
     }
 
     function getCookies(name) {
-        const cDecoded = decodeURIComponent(document.cookie);
-        const cArray = cDecoded.split(';');
-        let result = null;
-        cArray.forEach(element => {
-            if (element.indexOf(name) === 0) {
-                result = element.substring(name.length + 1);
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+
+    function uploadData(content, path)
+    {
+        var settings = {
+            "url": `https://api.github.com/repos/catherians-database/user-base1/contents/Users/${path}`,
+            "method": "PUT",
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Bearer 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",
+                "Content-Type": "application/json"
+            },
+            "data": JSON.stringify({
+                "message": "Create",
+                "content": content
+            }),
+        };
+
+        $.ajax(settings).done(function (response, status, header) {
+            //console.log(statuscode);
+            //console.log(response);
+            console.log(header.status);
+            if (status == "success") {
+                deleteCookies("userName");
+                deleteCookies("description");
+                deleteCookies("email");
+                deleteCookies("year");
+                deleteCookies("gender");
+                deleteCookies("combination");
+                deleteCookies("informative");
+                deleteCookies("enjoyment");
+                deleteCookies("hatefull");
+                deleteCookies("instagram");
+                deleteCookies("snapchat");
+                deleteCookies("twitter");
+                deleteCookies("privateKey");
+                deleteCookies("encryptedKey");
+                //window.location.replace(`/Catheriens/?user=${getCookies("userID")}`);
             }
         });
-
     }
 });
