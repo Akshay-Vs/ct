@@ -63,8 +63,9 @@
   .uploader #file-image {
     display: inline;
     margin: 0 auto 0.5rem auto;
-    width: auto;
-    height: auto;
+    width: 124px;
+    height: 124px;
+    border-radius: 100%;
     max-width: 180px;
   }
   .uploader #file-image.hidden {
