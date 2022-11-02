@@ -97,7 +97,8 @@ $(document).ready(function () {
 
         // Upload Data
         
-        var userID = 10001;
+        var userID = getCookies("userName")+Math.floor(Math.random() * 100);
+        
         setCookies("userID", userID, 365);
         data = `
                 "userName": "${getCookies("userName")}",
