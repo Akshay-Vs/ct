@@ -17,7 +17,7 @@ $(document).ready(function () {
 
         if (userName == "" || description == "" || email == "" || year == "" || (genderMale == false && genderFemale == false)) {
             alert("Please fill all the fields");
-        } 
+        }
         else {
             setCookies("userName", userName, 30);
             setCookies("description", description, 30);
@@ -60,15 +60,56 @@ $(document).ready(function () {
         enjoyment = $("#enj").val();
         informative = $("#inf").val();
         hatefull = $("#htf").val();
-        
+
         setCookies("instagram", instagram, 30);
         setCookies("snapchat", snapchat, 30);
         setCookies("twitter", twitter, 30);
-        setCookies("enjoyment",enjoyment, 30);
+        setCookies("enjoyment", enjoyment, 30);
         setCookies("informative", informative, 30);
-        setCookies("Hatfull",hatefull,30);
+        setCookies("Hatfull", hatefull, 30);
 
         window.location.replace('/Catheriens/join/setup4')
+    });
+
+    $('#upload').click(function () {
+        console.log("Upload")
+        var element = document.getElementById("file-upload")
+        var image = element.src
+        //window.open(image)
+        //console.log(element)
+        //output.onload = function () {
+        //URL.revokeObjectURL(output.src) // free memory
+        //}
+
+        var file = element.files[0];
+        //console.log(file)
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = function () {
+            var raw = reader.result.replace("data:image/jpeg;base64,", "")
+
+
+            var settings = {
+                "url": `https://api.github.com/repos/Erric-Muller/Test/contents/Users/User 3456/Profile/main.png`,
+                "method": "PUT",
+                "timeout": 0,
+                "headers": {
+                    "Authorization": "Bearer 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",
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "message": "Create",
+                    "content": raw
+                }),
+            };
+
+            $.ajax(settings).done(function (responsecode, statuscode, header) {
+                console.log(statuscode);
+                console.log(responsecode);
+                console.log(header.status);
+            });
+
+        }
     })
 
     //cookies
