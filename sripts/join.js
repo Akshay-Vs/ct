@@ -2,7 +2,7 @@ let name, description, email;
 let year, genderMale, genderFemale;
 let privateKey, confirmKey, combination;
 let enjoyment, informative, hatefull;
-let uploadStatus = 0;
+let uploadStatus = 0, retries = 0;
 $(document).ready(function () {
 
     $('#next1').click(function () {
@@ -86,6 +86,9 @@ $(document).ready(function () {
         //URL.revokeObjectURL(output.src) // free memory
         //}
 
+        updateCount();
+        var userID = getCookies("userID");
+
         var file = element.files[0];
         //console.log(file)
         var reader = new FileReader();
@@ -95,28 +98,7 @@ $(document).ready(function () {
             uploadData(raw, `User ${userID}/profile.png`);
         }
 
-        // Upload Data
-        // get count from server
-        // increment count by 1
-        // upload count to server
 
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-          };
-          
-        var count =  fetch('https://raw.githubusercontent.com/catherians-database/user_count/main/user_count', requestOptions)
-            .then(response => response.text())
-            .then(result => {
-                result++;
-                return result;
-            })
-        console.log(count.result);
-
-
-        var userID = getCookies("userName") + Math.floor(Math.random() * 100);
-
-        setCookies("userID", userID, 365);
         data = `
                 "userName": "${getCookies("userName")}",
                 "description": "${getCookies("description")}",
@@ -135,7 +117,6 @@ $(document).ready(function () {
                 "UserID": "${userID}"`;
 
         data = btoa(data);
-        //console.log(data)
         uploadData(data, `User ${userID}/data.json`)
 
     })
@@ -214,5 +195,59 @@ $(document).ready(function () {
                 console.log(response);
             });
         }
+
+    }
+
+    function updateCount() {
+        //Get count
+        deleteCookies("UserID")
+        var settings = {
+            "url": "https://api.github.com/repos/catherians-database/user_count/contents/user_count",
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Bearer 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",
+                "Content-Type": "application/json"
+            }
+        };
+
+        $.ajax(settings).done(function (response) {
+            var count = response.content;
+            count = atob(count);
+            count = parseInt(count);
+            count += 1;
+            count = count.toString();
+            count = count
+            setCookies("userID", count, 365);
+            count = btoa(count);
+
+            var settings = {
+                "url": "https://api.github.com/repos/catherians-database/user_count/contents/user_count",
+                "method": "PUT",
+                "timeout": 0,
+                "headers": {
+                    "Authorization": "Bearer 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",
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "message": "Create",
+                    "content": `${count}`,
+                    "sha": response.sha
+                }),
+            };
+
+            $.ajax(settings).done(function (response, statuscode, header) {
+                console.log("Count updated");
+                if (header.statuscode == "error") {
+                    if (retries < 5) {
+                        retries += 1;
+                        updateCount();
+                    } else {
+                        console.log("Error updating count")
+                    }
+                }
+
+            });
+        });
     }
 });
