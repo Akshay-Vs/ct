@@ -20,10 +20,40 @@ const app = Vue.createApp({
     },
     methods: {
         async getUser() {
-            const res = await fetch('https://randomuser.me/api')
-            const { results } = await res.json()
 
             this.btntxt = "Loading"
+
+            count = async function () {
+                var requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow'
+                };
+
+                fetch("https://raw.githubusercontent.com/catherians-database/user_count/main/user_count", requestOptions)
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));
+            }
+
+            res = async function () {
+                var myHeaders = new Headers();
+                myHeaders.append("Authorization", "Bearer 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");
+
+                var requestOptions = {
+                    method: 'GET',
+                    headers: myHeaders,
+                    redirect: 'follow'
+                };
+
+                await fetch("https://api.github.com/repos/catherians-database/user-base1/contents/Users/", requestOptions)
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));
+            }
+            console.log(count());
+            console.log(res());
+
+
             setTimeout(() => {
                 this.picture = results[0].picture.large,
                     this.name = results[0].name.first + " " + results[0].name.last,
@@ -32,9 +62,9 @@ const app = Vue.createApp({
                     this.check = "null";
                 if (this.gender == "male") this.shadow = "blue"
                 else if (this.gender == "female") this.shadow = "pink";
-                    this.twitter = "https://twitter.com/"+this.name,
-                    this.snapchat = "https://snapchat.com/"+this.name,
-                    this.instagram = "https://www.instagram.com/"+this.name;
+                this.twitter = "https://twitter.com/" + this.name,
+                    this.snapchat = "https://snapchat.com/" + this.name,
+                    this.instagram = "https://www.instagram.com/" + this.name;
             }, 500)
         },
     }

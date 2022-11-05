@@ -44,10 +44,10 @@ body {
 
 .wrapper {
 	width: 370px;
-	height: 580px;
+	height: 600px;
 	background: #fdfeff;
 	transition: background 0.6s ease;
-	border-radius: 10px;
+	border-radius: 28px;
 	padding: 20px 20px 20px 20px;
 	box-shadow: 0 14px 40px rgba(0, 0, 0, 0.31);
 }

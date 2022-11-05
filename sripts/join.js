@@ -2,7 +2,7 @@ let name, description, email;
 let year, genderMale, genderFemale;
 let privateKey, confirmKey, combination;
 let enjoyment, informative, hatefull;
-
+let uploadStatus = 0;
 $(document).ready(function () {
 
     $('#next1').click(function () {
@@ -78,8 +78,8 @@ $(document).ready(function () {
 
         // Upload Image 
 
-        var element = document.getElementById("file-upload")
-        var image = element.src
+        var element = document.getElementById("file-upload");
+        var image = element.src;
         //window.open(image)
         //console.log(element)
         //output.onload = function () {
@@ -91,14 +91,31 @@ $(document).ready(function () {
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = function () {
-            var raw = reader.result.replace("data:image/jpeg;base64,", "")
-            uploadData(raw, `User ${userID}/profile.png`)
+            var raw = reader.result.replace("data:image/jpeg;base64,", "");
+            uploadData(raw, `User ${userID}/profile.png`);
         }
 
         // Upload Data
-        
-        var userID = getCookies("userName")+Math.floor(Math.random() * 100);
-        
+        // get count from server
+        // increment count by 1
+        // upload count to server
+
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+          };
+          
+        var count =  fetch('https://raw.githubusercontent.com/catherians-database/user_count/main/user_count', requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                result++;
+                return result;
+            })
+        console.log(count.result);
+
+
+        var userID = getCookies("userName") + Math.floor(Math.random() * 100);
+
         setCookies("userID", userID, 365);
         data = `
                 "userName": "${getCookies("userName")}",
@@ -115,10 +132,10 @@ $(document).ready(function () {
                 "twitter": "${getCookies("twitter")}",
                 "privateKey": "${getCookies("privateKey")}",
                 "encryptedKey": "${getCookies("encryptedKey")}",
-                "UserID": ${userID}`;
+                "UserID": "${userID}"`;
 
         data = btoa(data);
-        console.log(data)
+        //console.log(data)
         uploadData(data, `User ${userID}/data.json`)
 
     })
@@ -138,16 +155,15 @@ $(document).ready(function () {
     function getCookies(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
+        for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
         }
         return null;
     }
 
-    function uploadData(content, path)
-    {
+    function uploadData(content, path) {
         var settings = {
             "url": `https://api.github.com/repos/catherians-database/user-base1/contents/Users/${path}`,
             "method": "PUT",
@@ -162,27 +178,41 @@ $(document).ready(function () {
             }),
         };
 
-        $.ajax(settings).done(function (response, status, header) {
+        $.ajax(settings).done(function (response, statuscode, header) {
             //console.log(statuscode);
             //console.log(response);
             console.log(header.status);
-            if (status == "success") {
-                deleteCookies("userName");
-                deleteCookies("description");
-                deleteCookies("email");
-                deleteCookies("year");
-                deleteCookies("gender");
-                deleteCookies("combination");
-                deleteCookies("informative");
-                deleteCookies("enjoyment");
-                deleteCookies("hatefull");
-                deleteCookies("instagram");
-                deleteCookies("snapchat");
-                deleteCookies("twitter");
-                deleteCookies("privateKey");
-                deleteCookies("encryptedKey");
-                //window.location.replace(`/Catheriens/?user=${getCookies("userID")}`);
+            if (statuscode == "success") {
+                uploadStatus += 1;
+
+                if (uploadStatus >= 2) {
+                    //window.location.replace(`/Catheriens/`);
+                }
+            }
+            else if (statuscode == "error") {
+                uploadData(content, path);
             }
         });
+
+        function update(content, url) {
+            var settings = {
+                "url": url,
+                "method": "PUT",
+                "timeout": 0,
+                "headers": {
+                    "Authorization": "Bearer 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",
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "message": "Create",
+                    "content": `${content}`,
+                    "sha": getCookies("sha")
+                }),
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+        }
     }
 });
