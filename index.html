@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3.0.5"></script>
-
-    <script src="sripts/navbar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+    <script src="scripts/join.js"></script>
 </head>
 
 <body class="bg">
@@ -23,6 +25,7 @@
 
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <h3 id="userID">Hello </h3>
                 <br><br><br><br>
                 <a id="navbtn" onclick="window.location.replace('join/setup1/');">Join</a>
                 <a href="" id="navbtn">About</a>

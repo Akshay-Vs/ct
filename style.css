@@ -52,6 +52,7 @@ body {
 	box-shadow: 0 14px 40px rgba(0, 0, 0, 0.31);
 }
 
+
 .cpyright{
 	display: inline;
 	justify-content: center;
@@ -60,6 +61,7 @@ body {
 	font-weight: 500;
 	font-size: 10px;
 	margin: 10px;
+
 }
 
 .cpyright a{
@@ -123,8 +125,9 @@ body {
 	bottom: 12.7em;
 }
 
-.wrapper .profile .null{
+.wrapper .profile .undefined{
 	opacity: 0;
+	transform: scale(0);
 }
 
 .wrapper .profile .check i {
@@ -175,6 +178,8 @@ body {
 	background: linear-gradient(to bottom right,   #6452e9, #639ff9);
 }
 
+
+
 .wrapper .profile .pink {
 	box-shadow: 600px -106px #c90a6d;
 	border: #c90a6d solid 3px;
@@ -199,6 +204,19 @@ body {
 	margin-bottom: 1.5em;
 	border-radius: 100%;
 	box-shadow: 0 13px 26px rgba(0, 0, 0, .2), 0 3px 6px rgba(0, 0, 0, .2);
+}
+
+.wrapper .profile .red {
+	box-shadow: 600px -106px rgb(227, 14, 14);
+	border: rgb(239, 13, 13) solid 3px;
+	width: 124px;
+	height: 124px;
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1.5em;
+	border-radius: 100%;
+	box-shadow: 0 13px 26px rgba(255, 0, 0, 0.2), 0 3px 6px rgba(249, 0, 0, 0.894);
 }
 
 

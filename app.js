@@ -1,73 +1,127 @@
 const app = Vue.createApp({
-    data() {
-        return {
-            name: "Akshay Vs",
-            gender: "male",
-            shadow: "blue",
-            picture: 'profile.jpg',
-            combination: "Comp-Science",
-            description: "Machine et trois personnes",
-            btntxt: "Flush",
-            enjoyment: "50%",
-            informative: "20%",
-            hatefull: "60%",
-            check: "check",
-            verified: "developer",
-            instagram: "https://www.instagram.com/akshay._.vs__",
-            twitter: "https://twitter.com/Akshay_vs__",
-            snapchat: ""
-        }
-    },
-    methods: {
-        async getUser() {
-
-            this.btntxt = "Loading"
-
-            count = async function () {
-                var requestOptions = {
-                    method: 'GET',
-                    redirect: 'follow'
-                };
-
-                fetch("https://raw.githubusercontent.com/catherians-database/user_count/main/user_count", requestOptions)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .catch(error => console.log('error', error));
-            }
-
-            res = async function () {
-                var myHeaders = new Headers();
-                myHeaders.append("Authorization", "Bearer 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");
-
-                var requestOptions = {
-                    method: 'GET',
-                    headers: myHeaders,
-                    redirect: 'follow'
-                };
-
-                await fetch("https://api.github.com/repos/catherians-database/user-base1/contents/Users/", requestOptions)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .catch(error => console.log('error', error));
-            }
-            console.log(count());
-            console.log(res());
-
-
-            setTimeout(() => {
-                this.picture = results[0].picture.large,
-                    this.name = results[0].name.first + " " + results[0].name.last,
-                    this.gender = results[0].gender,
-                    this.btntxt = "Flush",
-                    this.check = "null";
-                if (this.gender == "male") this.shadow = "blue"
-                else if (this.gender == "female") this.shadow = "pink";
-                this.twitter = "https://twitter.com/" + this.name,
-                    this.snapchat = "https://snapchat.com/" + this.name,
-                    this.instagram = "https://www.instagram.com/" + this.name;
-            }, 500)
-        },
+  data() {
+    return {
+      name: "Hey!",
+      gender: "male",
+      shadow: "blue",
+      picture: 'https://d2pas86kykpvmq.cloudfront.net/images/humans-3.0/ava-4.png ',
+      combination: "Welcome to Catheriens!",
+      description: "Click Flush to shuffle",
+      btntxt: "Flush",
+      enjoyment: "0%",
+      informative: "0%",
+      hatefull: "0%",
+      check: "check",
+      verified: "Welcome",
+      instagram: "",
+      twitter: "",
+      snapchat: "",
+      retries: 0,
+      style: "",
     }
+  },
+  methods: {
+    async getUser() {
+
+      let name, description, gender, picture, combination, enjoyment, informative, hatefull, check, verified, instagram, twitter, snapchat;
+
+      this.btntxt = "Loading"
+
+      //get usercount
+      var settings = {
+        "url": "https://raw.githubusercontent.com/catherians-database/user_count/main/user_count",
+        "method": "GET",
+        "timeout": 0,
+      };
+
+      $.ajax(settings).done(async function (response) {
+
+        //get random user id except current user id
+        let id = Math.floor(Math.random() * (response));
+
+
+        //console.log("Requested ID: "+id);
+        //console.log("Total Users: "+response);
+        //get userdata
+        var settings = {
+          "url": `https://api.github.com/repos/catherians-database/user-base1/contents/Users/User%20${id}/data.json`,
+          "method": "GET",
+          "timeout": 0,
+          "headers": {
+            "Authorization": "Bearer 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"
+          },
+        };
+
+        $.ajax(settings).done(async function (response) {
+          const res = JSON.parse(atob(response.content));
+          //console.log(res);
+          name = res.userName;
+          description = res.description;
+          gender = res.gender;
+          combination = res.combination;
+          enjoyment = res.enjoyment;
+          informative = res.informative;
+          hatefull = res.hatefull;
+          check = res.check;
+          verified = res.verified;
+          instagram = res.instagram;
+          twitter = res.twitter;
+          snapchat = res.snapchat;
+          check = res.check;
+          verified = res.verified;
+          console.log("User "+res.UserID);
+
+          //GEt proflile.png
+          picture = `https://raw.githubusercontent.com/catherians-database/user-base1/main/Users/User%20${id}/profile.png`
+
+        });
+
+      });
+
+      setTimeout(() => {
+        if (name == undefined && description == undefined && gender == undefined && combination == undefined) {
+          if (this.retries <= 10) {
+            this.retries++;
+            setTimeout(() => {
+              this.getUser();
+              console.log("Network Error: Executing reccursion");
+              this.btntxt = "Connecting...";
+              this.shadow = "red"
+            }, 100);
+          }
+          else {
+            this.btntxt = "Try again";
+            this.shadow = "red",
+              this.description = "Network Error"
+            this.retries = 0;
+          }
+
+        }
+        else {
+          this.retries = 0;
+          this.name = name,
+            this.gender = gender,
+            this.combination = combination,
+            this.description = description,
+            this.picture = picture,
+            this.btntxt = "Flush",
+            this.informative = informative + " %",
+            this.enjoyment = enjoyment + " %",
+            this.hatefull = hatefull + " %",
+            this.twitter = "https://twitter.com/" + twitter,
+            this.snapchat = "https://snapchat.com/" + snapchat,
+            this.instagram = "https://www.instagram.com/" + instagram;
+          if (this.gender == "male") this.shadow = "blue"
+          else if (this.gender == "female") this.shadow = "pink";
+          if (check != undefined) {
+            this.verified = verified;
+            this.check = check
+          }
+
+        }
+      }, 1000)
+    },
+  }
 })
 
 app.mount('#app')

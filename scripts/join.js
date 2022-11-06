@@ -5,6 +5,8 @@ let enjoyment, informative, hatefull;
 let uploadStatus = 0, retries = 0;
 $(document).ready(function () {
 
+    $('#userID').text("Hello User "+ getCookies("userID"));
+    console.log("Hello "+ getCookies("userID"));
     $('#next1').click(function () {
         userName = $("#name").val();
         description = $("#description").val();
@@ -46,9 +48,8 @@ $(document).ready(function () {
             alert("Private keys do not match");
         } else {
             encryptedKey = CryptoJS.AES.encrypt(privateKey, privateKey);
-            setCookies("privateKey", encryptedKey, 30);
+            setCookies("encryptedKey", encryptedKey, 30);
             setCookies("combination", combination(), 30);
-            setCookies("privateKey", privateKey, 30)
             console.log(document.cookie);
             console.log(getCookies("email"));
             console.log(encryptedKey);
@@ -69,7 +70,7 @@ $(document).ready(function () {
         setCookies("twitter", twitter, 30);
         setCookies("enjoyment", enjoyment, 30);
         setCookies("informative", informative, 30);
-        setCookies("Hatfull", hatefull, 30);
+        setCookies("hatefull", hatefull, 30);
 
         window.location.replace('/Catheriens/join/setup4')
     });
@@ -99,22 +100,7 @@ $(document).ready(function () {
         }
 
 
-        data = `
-                "userName": "${getCookies("userName")}",
-                "description": "${getCookies("description")}",
-                "email": "${getCookies("email")}",
-                "year": "${getCookies("year")}",
-                "gender": "${getCookies("gender")}",
-                "combination": "${getCookies("combination")}",
-                "informative": "${getCookies("informative")}",
-                "enjoyment": "${getCookies("enjoyment")}",
-                "hatefull": "${getCookies("hatefull")}",
-                "instagram": "${getCookies("instagram")}",
-                "snapchat": "${getCookies("snapchat")}",
-                "twitter": "${getCookies("twitter")}",
-                "privateKey": "${getCookies("privateKey")}",
-                "encryptedKey": "${getCookies("encryptedKey")}",
-                "UserID": "${userID}"`;
+        data = `{"userName": "${getCookies("userName")}","description": "${getCookies("description")}","email": "${getCookies("email")}","year": "${getCookies("year")}","gender": "${getCookies("gender")}","combination": "${getCookies("combination")}","informative": "${getCookies("informative")}","enjoyment": "${getCookies("enjoyment")}","hatefull": "${getCookies("hatefull")}","instagram": "${getCookies("instagram")}","snapchat": "${getCookies("snapchat")}","twitter": "${getCookies("twitter")}","encryptedKey": "${getCookies("encryptedKey")}","UserID": "${userID}"},"verified": "undefined","check": "undefined"}`;
 
         data = btoa(data);
         uploadData(data, `User ${userID}/data.json`)
@@ -167,7 +153,7 @@ $(document).ready(function () {
                 uploadStatus += 1;
 
                 if (uploadStatus >= 2) {
-                    //window.location.replace(`/Catheriens/`);
+                    window.location.replace(`/Catheriens/`);
                 }
             }
             else if (statuscode == "error") {
