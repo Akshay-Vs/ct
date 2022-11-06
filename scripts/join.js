@@ -5,8 +5,8 @@ let enjoyment, informative, hatefull;
 let uploadStatus = 0, retries = 0;
 $(document).ready(function () {
 
-    $('#userID').text("Hello User "+ getCookies("userID"));
-    console.log("Hello "+ getCookies("userID"));
+    $('#userID').text("Hello User " + getCookies("userID"));
+    console.log("Hello " + getCookies("userID"));
     $('#next1').click(function () {
         userName = $("#name").val();
         description = $("#description").val();
@@ -38,7 +38,7 @@ $(document).ready(function () {
             if ($("#bs").is(':checked')) return "Bio-Science"
             else if ($("#cs").is(':checked')) return "Comp-Science"
             else if ($("#cm").is(':checked')) return "Commerce"
-            else if ($("#hm").is(':checked')) return "Hummannities"
+            else if ($("#hm").is(':checked')) return "Humanities"
         };
 
         if (privateKey === undefined || confirmKey === undefined || combination === undefined) {
@@ -77,33 +77,39 @@ $(document).ready(function () {
 
     $('#upload').click(function () {
 
-        // Upload Image 
-
         var element = document.getElementById("file-upload");
-        var image = element.src;
+        var file = element.files[0];
+
         //window.open(image)
         //console.log(element)
         //output.onload = function () {
         //URL.revokeObjectURL(output.src) // free memory
         //}
-
-        updateCount();
-        var userID = getCookies("userID");
-
-        var file = element.files[0];
-        //console.log(file)
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = function () {
-            var raw = reader.result.replace("data:image/jpeg;base64,", "");
-            uploadData(raw, `User ${userID}/profile.png`);
+        if (file == undefined) {
+            alert("Uploaded image is not supported"); 
+            $('#upload').on("Upload");
+            return;
         }
+            $('#upload').text("Uploading...");
+            $('#upload').off('click');
+            // Upload Image 
+            console.log("Uploading...");
+            updateCount();
+            var userID = getCookies("userID");
+
+            //console.log(file)
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function () {
+                var raw = reader.result.replace("data:image/jpeg;base64,", "");
+                uploadData(raw, `User ${userID}/profile.png`);
+            }
 
 
-        data = `{"userName": "${getCookies("userName")}","description": "${getCookies("description")}","email": "${getCookies("email")}","year": "${getCookies("year")}","gender": "${getCookies("gender")}","combination": "${getCookies("combination")}","informative": "${getCookies("informative")}","enjoyment": "${getCookies("enjoyment")}","hatefull": "${getCookies("hatefull")}","instagram": "${getCookies("instagram")}","snapchat": "${getCookies("snapchat")}","twitter": "${getCookies("twitter")}","encryptedKey": "${getCookies("encryptedKey")}","UserID": "${userID}"},"verified": "undefined","check": "undefined"}`;
+            data = `{"userName": "${getCookies("userName")}","description": "${getCookies("description")}","email": "${getCookies("email")}","year": "${getCookies("year")}","gender": "${getCookies("gender")}","combination": "${getCookies("combination")}","informative": "${getCookies("informative")}","enjoyment": "${getCookies("enjoyment")}","hatefull": "${getCookies("hatefull")}","instagram": "${getCookies("instagram")}","snapchat": "${getCookies("snapchat")}","twitter": "${getCookies("twitter")}","encryptedKey": "${getCookies("encryptedKey")}","UserID": "${userID}","verified": "undefined","check": "undefined"}`;
 
-        data = btoa(data);
-        uploadData(data, `User ${userID}/data.json`)
+            data = btoa(data);
+            uploadData(data, `User ${userID}/data.json`)
 
     })
 
