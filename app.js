@@ -37,7 +37,16 @@ const app = Vue.createApp({
       $.ajax(settings).done(async function (response) {
 
         //get random user id except current user id
-        let id = Math.floor(Math.random() * (response));
+        let id, temp, current = Math.floor(Math.random() * (response));
+
+        temp = window.localStorage.getItem("temp");
+        if (temp == current) {
+          id = current + 1;
+          window.localStorage.setItem("temp", id);
+        } else {
+          id = current;
+          window.localStorage.setItem("temp", id);
+        }
 
 
         //console.log("Requested ID: "+id);
@@ -69,7 +78,7 @@ const app = Vue.createApp({
           snapchat = res.snapchat;
           check = res.check;
           verified = res.verified;
-          console.log("User "+res.UserID);
+          console.log("User " + res.UserID);
 
           //GEt proflile.png
           picture = `https://raw.githubusercontent.com/catherians-database/user-base1/main/Users/User%20${id}/profile.png`
