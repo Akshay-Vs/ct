@@ -165,7 +165,7 @@ $(document).ready(function () {
                 }
             }
             else if (statuscode == "error") {
-                uploadData(content, path);
+                alert("Server Busy: Please try again");
             }
         });
 
