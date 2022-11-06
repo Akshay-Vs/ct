@@ -65,6 +65,17 @@ body {
 
 }
 
+.version{
+	display: inline;
+	justify-content: center;
+	align-items: center;
+	color: rgb(122, 126, 129);
+	font-weight: 500;
+	font-size: 12px;
+	margin: 10px;
+
+}
+
 .cpyright a{
 	transform: translateY(-10px);
 }
