@@ -5,7 +5,9 @@ let enjoyment, informative, hatefull;
 let uploadStatus = 0, retries = 0;
 $(document).ready(function () {
 
-    $('#userID').text("Hello User " + getCookies("userID"));
+    if(getCookies("userID")==null) $('#userID').text("Hello Anonymous");
+    else $('#userID').text("Hello "+getCookies("userID"));
+
     console.log("Hello " + getCookies("userID"));
     $('#next1').click(function () {
         userName = $("#name").val();
