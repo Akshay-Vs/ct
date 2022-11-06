@@ -4,7 +4,7 @@ const app = Vue.createApp({
       name: "Hey!",
       gender: "male",
       shadow: "blue",
-      picture: 'Ct.gif ',
+      picture: 'img/Ct.gif ',
       combination: "Explore Catheriens!",
       description: "Click Flush to shuffle",
       btntxt: "Flush",

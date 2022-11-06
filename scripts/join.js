@@ -6,7 +6,7 @@ let uploadStatus = 0, retries = 0;
 $(document).ready(function () {
 
     if(getCookies("userID")==null) $('#userID').text("Hello Anonymous");
-    else $('#userID').text("Hello "+getCookies("userID"));
+    else $('#userID').text("Hello User "+getCookies("userID"));
 
     console.log("Hello " + getCookies("userID"));
     $('#next1').click(function () {
