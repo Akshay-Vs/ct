@@ -57,7 +57,6 @@ const app = Vue.createApp({
           "method": "GET",
           "timeout": 0,
           "headers": {
-            "Authorization": "Bearer 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"
           },
         };
 
