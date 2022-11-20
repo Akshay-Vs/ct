@@ -3,7 +3,7 @@ let year, genderMale, genderFemale;
 let privateKey, confirmKey, combination;
 let enjoyment, informative, hatefull;
 let uploadStatus = 0, retries = 0;
-let token = "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";
+let token = "DfpWNZ9cfdQXpr68cSAI0jpCN77SI70WXpn6";
 $(document).ready(function () {
 
     if(getCookies("userID")==null) $('#userID').text("Hello Anonymous");
@@ -145,7 +145,7 @@ $(document).ready(function () {
             "method": "PUT",
             "timeout": 0,
             "headers": {
-                "Authorization": `Bearer ${token}`,
+                "Authorization": `Bearer ghp_${token}`,
                 "Content-Type": "application/json"
             },
             "data": JSON.stringify({
@@ -176,7 +176,7 @@ $(document).ready(function () {
                 "method": "PUT",
                 "timeout": 0,
                 "headers": {
-                    "Authorization": `Bearer ${token}`,
+                    "Authorization": `Bearer ghp_${token}`,
                     "Content-Type": "application/json"
                 },
                 "data": JSON.stringify({
@@ -201,7 +201,7 @@ $(document).ready(function () {
             "method": "GET",
             "timeout": 0,
             "headers": {
-                "Authorization": `Bearer ${token}`,
+                "Authorization": `Bearer ghp_${token}`,
                 "Content-Type": "application/json"
             }
         };
@@ -221,7 +221,7 @@ $(document).ready(function () {
                 "method": "PUT",
                 "timeout": 0,
                 "headers": {
-                    "Authorization": `Bearer ${token}`,
+                    "Authorization": `Bearer ghp_${token}`,
                     "Content-Type": "application/json"
                 },
                 "data": JSON.stringify({
