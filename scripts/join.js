@@ -3,7 +3,7 @@ let year, genderMale, genderFemale;
 let privateKey, confirmKey, combination;
 let enjoyment, informative, hatefull;
 let uploadStatus = 0, retries = 0;
-let token = "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";
+let token = "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";
 $(document).ready(function () {
 
     if(getCookies("userID")==null) $('#userID').text("Hello Anonymous");
