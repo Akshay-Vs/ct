@@ -101,11 +101,13 @@ $(document).ready(function () {
             var userID = getCookies("userID");
 
             //console.log(file)
+
+            //upload image
             var reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onloadend = function () {
                 var raw = reader.result.replace("data:image/jpeg;base64,", "");
-                uploadData(raw, `User ${userID}/profile.png`);
+                uploadData(raw, btoa(`User ${userID}/profile.png`));
             }
 
 
@@ -206,6 +208,7 @@ $(document).ready(function () {
             }
         };
 
+        //update count
         $.ajax(settings).done(function (response) {
             var count = response.content;
             count = atob(count);
