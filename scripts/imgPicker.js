@@ -1,6 +1,9 @@
 
 // File Upload
 // 
+$('#get-online').click(function(){
+    window.open("https://instadp.io/profile-downloader/", "_blank");
+})
 function ekUpload() {
     function Init() {
 

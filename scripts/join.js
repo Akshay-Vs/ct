@@ -6,10 +6,19 @@ let uploadStatus = 0, retries = 0;
 let token = "DfpWNZ9cfdQXpr68cSAI0jpCN77SI70WXpn6";
 $(document).ready(function () {
 
-    if(getCookies("userID")==null) $('#userID').text("Hello Anonymous");
-    else $('#userID').text("Hello User "+getCookies("userID"));
-
+    if (getCookies("userID") == null) $('#userID').text("Hello Anonymous");
+    else $('#userID').text(`Hello  ${getCookies("userName")} #${getCookies("userID")}`);
     console.log("Hello " + getCookies("userID"));
+
+    //setup
+
+    $('#join').click(function () {
+        if (getCookies("setup1") == "true") window.location.replace('/Catheriens/join/setup2/');
+        else if (getCookies("setup2") == "true") window.location.replace('/Catheriens/join/setup3/');
+        else if (getCookies("setup3") == "true") window.location.replace('/Catheriens/join/setup4/');
+        else window.location.replace('/Catheriens/join/setup1/');
+    })
+
     $('#next1').click(function () {
         userName = $("#name").val();
         description = $("#description").val();
@@ -24,6 +33,7 @@ $(document).ready(function () {
             alert("Please fill all the fields");
         }
         else {
+            setCookies("setup1", "true", 30);
             setCookies("userName", userName, 30);
             setCookies("description", description, 30);
             setCookies("email", email, 30);
@@ -51,6 +61,7 @@ $(document).ready(function () {
             alert("Private keys do not match");
         } else {
             encryptedKey = CryptoJS.AES.encrypt(privateKey, privateKey);
+            setCookies("setup2", "true", 30);
             setCookies("encryptedKey", encryptedKey, 30);
             setCookies("combination", combination(), 30);
             console.log(document.cookie);
@@ -67,7 +78,9 @@ $(document).ready(function () {
         enjoyment = $("#enj").val();
         informative = $("#inf").val();
         hatefull = $("#htf").val();
+        terms = $("#terms").is(':checked');
 
+        setCookies("setup3", "true", 30);
         setCookies("instagram", instagram, 30);
         setCookies("snapchat", snapchat, 30);
         setCookies("twitter", twitter, 30);
@@ -75,7 +88,8 @@ $(document).ready(function () {
         setCookies("informative", informative, 30);
         setCookies("hatefull", hatefull, 30);
 
-        window.location.replace('/Catheriens/join/setup4')
+        if(terms)window.location.replace('/Catheriens/join/setup4');
+        else alert("You have to agree to the terms and conditions to continue");
     });
 
     $('#upload').click(function () {
@@ -89,32 +103,32 @@ $(document).ready(function () {
         //URL.revokeObjectURL(output.src) // free memory
         //}
         if (file == undefined) {
-            alert("Uploaded image is not supported"); 
+            alert("Uploaded image is not supported");
             $('#upload').on("Upload");
             return;
         }
-            $('#upload').text("Uploading...");
-            $('#upload').off('click');
-            // Upload Image 
-            console.log("Uploading...");
-            updateCount();
-            var userID = getCookies("userID");
+        $('#upload').text("Uploading...");
+        $('#upload').off('click');
+        // Upload Image 
+        console.log("Uploading...");
+        updateCount();
+        var userID = getCookies("userID");
 
-            //console.log(file)
-
-            //upload image
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onloadend = function () {
-                var raw = reader.result.replace("data:image/jpeg;base64,", "");
-                uploadData(raw, btoa(`User ${userID}/profile.png`));
-            }
+        //console.log(file)
 
 
-            data = `{"userName": "${getCookies("userName")}","description": "${getCookies("description")}","email": "${getCookies("email")}","year": "${getCookies("year")}","gender": "${getCookies("gender")}","combination": "${getCookies("combination")}","informative": "${getCookies("informative")}","enjoyment": "${getCookies("enjoyment")}","hatefull": "${getCookies("hatefull")}","instagram": "${getCookies("instagram")}","snapchat": "${getCookies("snapchat")}","twitter": "${getCookies("twitter")}","encryptedKey": "${getCookies("encryptedKey")}","UserID": "${userID}","verified": "undefined","check": "undefined"}`;
+        data = `{"userName": "${getCookies("userName")}","description": "${getCookies("description")}","email": "${getCookies("email")}","year": "${getCookies("year")}","gender": "${getCookies("gender")}","combination": "${getCookies("combination")}","informative": "${getCookies("informative")}","enjoyment": "${getCookies("enjoyment")}","hatefull": "${getCookies("hatefull")}","instagram": "${getCookies("instagram")}","snapchat": "${getCookies("snapchat")}","twitter": "${getCookies("twitter")}","encryptedKey": "${getCookies("encryptedKey")}","UserID": "${userID}","verified": "undefined","check": "undefined"}`;
 
-            data = btoa(data);
-            uploadData(data, `User ${userID}/data.json`)
+        data = btoa(data);
+        uploadData(data, `User ${userID}/data.json`)
+
+        //upload image
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = function () {
+            var raw = btoa(reader.result.replace("data:image/jpeg;base64,", ""));
+            uploadData(raw, `User ${userID}/profile.png`)
+        }
 
     })
 
@@ -165,6 +179,10 @@ $(document).ready(function () {
 
                 if (uploadStatus >= 2) {
                     window.location.replace(`/Catheriens/`);
+                    deleteCookies("setup1");
+                    deleteCookies("setup2");
+                    deleteCookies("setup3");
+
                 }
             }
             else if (statuscode == "error") {
@@ -189,7 +207,8 @@ $(document).ready(function () {
             };
 
             $.ajax(settings).done(function (response) {
-                console.log(response);
+                if(statuscode=="success") console.log(response);
+                else alert("Server Busy: Please try again");
             });
         }
 

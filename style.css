@@ -2,9 +2,12 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	-webkit-user-select: none;  /* Chrome all / Safari all */
-	-moz-user-select: none;     /* Firefox all */
-	-ms-user-select: none;      /* IE 10+ */
+	-webkit-user-select: none;
+	/* Chrome all / Safari all */
+	-moz-user-select: none;
+	/* Firefox all */
+	-ms-user-select: none;
+	/* IE 10+ */
 	user-select: none;
 	font-family: 'Righteous', cursive;
 }
@@ -24,7 +27,7 @@ body {
 }
 
 .bg {
-	background: linear-gradient(-67deg,  #6452e9, #639ff9,  #c90a6d, #ff48a0);
+	background: linear-gradient(-67deg, #6452e9, #639ff9, #c90a6d, #ff48a0);
 	background-size: 400% 400%;
 	animation: gradient 20s both infinite;
 	height: 100vh;
@@ -34,9 +37,11 @@ body {
 	0% {
 		background-position: 0% 50%;
 	}
+
 	50% {
 		background-position: 100% 50%;
 	}
+
 	100% {
 		background-position: 0% 50%;
 	}
@@ -54,7 +59,7 @@ body {
 }
 
 
-.cpyright{
+.cpyright {
 	display: inline;
 	justify-content: center;
 	align-items: center;
@@ -65,7 +70,7 @@ body {
 
 }
 
-.version{
+.version {
 	display: inline;
 	justify-content: center;
 	align-items: center;
@@ -76,7 +81,7 @@ body {
 
 }
 
-.cpyright a{
+.cpyright a {
 	transform: translateY(-10px);
 }
 
@@ -89,10 +94,10 @@ body {
 		border-radius: 0px;
 		padding: 20px 20px 20px 20px;
 		box-shadow: none;
-		
+
 	}
 
-	.bg{
+	.bg {
 		background: #31394d;
 	}
 }
@@ -137,7 +142,7 @@ body {
 	bottom: 12.7em;
 }
 
-.wrapper .profile .undefined{
+.wrapper .profile .undefined {
 	opacity: 0;
 	transform: scale(0);
 }
@@ -147,28 +152,30 @@ body {
 	display: inline-block;
 	margin-top: 20px;
 	z-index: 2;
-  }
-  
-  .wrapper .profile .check i[title]:hover::after {
+}
+
+.wrapper .profile .check i[title]:hover::after {
 	content: attr(title);
 	position: absolute;
 	left: 25px;
 	color: #e9eff6;
 	z-index: 1;
-	animation: title 200ms linear 1 
-  }
-  @keyframes title{
-	0%{
-		opacity:0;
-		z-index:1;
+	animation: title 200ms linear 1
+}
+
+@keyframes title {
+	0% {
+		opacity: 0;
+		z-index: 1;
 	}
-	50%{
+
+	50% {
 		opacity: 10%
 	}
 
-  }
+}
 
-.wrapper .profile .check #pink{
+.wrapper .profile .check #pink {
 	color: #fff;
 	width: 20px;
 	height: 20px;
@@ -179,7 +186,7 @@ body {
 	background: linear-gradient(to bottom right, #c90a6d, #ff48a0);
 }
 
-.wrapper .profile .check #blue{
+.wrapper .profile .check #blue {
 	color: #fff;
 	width: 20px;
 	height: 20px;
@@ -187,7 +194,7 @@ body {
 	line-height: 20px;
 	text-align: center;
 	border-radius: 100%;
-	background: linear-gradient(to bottom right,   #6452e9, #639ff9);
+	background: linear-gradient(to bottom right, #6452e9, #639ff9);
 }
 
 
@@ -282,19 +289,19 @@ body {
 	margin-right: auto;
 	border-radius: 70px;
 	box-shadow: 0 13px 26px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .16);
-	transition:5s;
+	transition: 5s;
 }
 
-.wrapper .profile .btn ::after{
+.wrapper .profile .btn ::after {
 	box-shadow: 5 13px 26px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .16);
 }
 
-.wrapper .profile #female{
+.wrapper .profile #female {
 	background: linear-gradient(to bottom right, #c90a6d, #ff48a0);
 	transition: 1s;
 }
 
-.wrapper .profile #male{
+.wrapper .profile #male {
 	background: linear-gradient(to bottom right, #6452e9, #639ff9);
 	transition: 1s;
 }
@@ -437,7 +444,7 @@ body {
 	color: #666b7d;
 }
 
-#left{
+#left {
 	float: right
 }
 
@@ -458,9 +465,9 @@ body {
 	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(16px);
 	text-align: center;
-  }
-  
-  .sidenav a {
+}
+
+.sidenav a {
 	padding: 8px 8px 8px 32px;
 	text-decoration: none;
 	font-size: 27px;
@@ -468,43 +475,72 @@ body {
 	color: #9e9e9e;
 	display: block;
 	margin: 10px
-  }
-  
-  .sidenav #navbtn {
+}
+
+.sidenav .navbtn {
 	background: transparent;
 	border-radius: 10px 0 10px;
 	animation: blink 7s linear infinite;
-  }
+}
 
-  @keyframes blink {
-	0%{
+a.register:link {
+	color: steelblue;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a.register:visited {
+	color: steelblue;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a.register:hover {
+	color: steelblue;
+	text-decoration: underline;
+	font-weight: normal;
+}
+
+a.register:active {
+	color: steelblue;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+@keyframes blink {
+	0% {
 		box-shadow: 0px 0px 8px steelblue;
 	}
-	30%{
+
+	30% {
 		box-shadow: 0px 0px 20px steelblue;
 	}
-	50%{
+
+	50% {
 		box-shadow: 0px 0px 0px steelblue;
 	}
-	80%{
+
+	80% {
 		box-shadow: 6px 0px 13px steelblue;
 	}
-	90%{
+
+	90% {
 		box-shadow: 0px 15 5px 5px steelblue;
 	}
-	100%{
+
+	100% {
 		box-shadow: 0px 0px 8px steelblue;
 	}
-  }
+}
 
-  .sidenav a:hover {
+.sidenav a:hover {
 	color: #f1f1f1;
-  }
-  
-  .sidenav .closebtn {
+}
+
+.sidenav .closebtn {
 	position: absolute;
 	top: 0;
 	right: 25px;
 	font-size: 36px;
 	margin-left: 50px;
-  }
+}
