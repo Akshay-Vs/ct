@@ -44,7 +44,7 @@
 <body class="bg">
     <input id="slider" class="customSlider" type="checkbox" checked>
     <div class="wrapper">
-        <i class="fa fa-home" onclick="window.location.replace('/Catheriens')"></i>
+        <i class="fa fa-arrow-left" onclick="window.location.replace('/Catheriens/join/setup2')"></i>
         <form>
             <h1 style="color:#9e9e9e;" align="center">Social</h1><br>
             <div class="user-box">
@@ -76,6 +76,10 @@
                     <label contenteditable="true" id="htf">Hatefull {{hatefull}}%</label>
                 </div>
               </div>
+              <div style="margin:20px; font-size: 12px; font-weight: 10;">
+                <input type="checkbox" name="terms" id="terms" required="true">
+                I agree to the <a href="terms.txt" target="_blank">terms and conditions</a>
+            </div>
             <br>
             <div class="btn" id="next3" type="submit">Next</div>
         </form>
