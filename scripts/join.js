@@ -13,6 +13,7 @@ $(document).ready(function () {
     //setup
 
     $('#join').click(function () {
+        console.log("join");
         if (getCookies("setup1") == "true") window.location.replace('/Catheriens/join/setup2/');
         else if (getCookies("setup2") == "true") window.location.replace('/Catheriens/join/setup3/');
         else if (getCookies("setup3") == "true") window.location.replace('/Catheriens/join/setup4/');
