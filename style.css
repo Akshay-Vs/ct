@@ -19,7 +19,6 @@ body {
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	background: #eeeeec;
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Open Sans', sans-serif;
@@ -31,6 +30,8 @@ body {
 	background-size: 400% 400%;
 	animation: gradient 20s both infinite;
 	height: 100vh;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
 }
 
 @keyframes gradient {
@@ -151,7 +152,7 @@ body {
 	position: relative;
 	display: inline-block;
 	margin-top: 20px;
-	z-index: 2;
+	z-index: 1;
 }
 
 .wrapper .profile .check i[title]:hover::after {
@@ -456,7 +457,7 @@ body {
 	height: 100%;
 	width: 250px;
 	position: fixed;
-	z-index: 1;
+	z-index: 10;
 	top: 0;
 	left: 0;
 	background-color: rgba(17, 17, 17, 0.43);

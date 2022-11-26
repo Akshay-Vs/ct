@@ -37,7 +37,7 @@ const app = Vue.createApp({
       $.ajax(settings).done(async function (response) {
 
         //get random user id except current user id
-        let id, temp, current = Math.floor(Math.random() * (response));
+        let id, temp, current = 5//Math.floor(Math.random() * (response));
 
         temp = window.localStorage.getItem("temp");
         if (temp == current) {
@@ -111,7 +111,7 @@ const app = Vue.createApp({
             this.gender = gender,
             this.combination = combination,
             this.description = description,
-            this.picture = picture,
+            this.picture = (picture),
             this.btntxt = "Flush",
             this.informative = informative + " %",
             this.enjoyment = enjoyment + " %",
