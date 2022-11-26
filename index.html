@@ -31,6 +31,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link rel="stylesheet" href="popup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Righteous&display=swap" rel="stylesheet">
@@ -54,9 +55,9 @@
                 <h3 id="userID">Hello </h3>
                 <br><br><br><br>
                 <a id="join" class="navbtn">Join</a>
-                <a href="" class="navbtn">About</a>
+                <a id="lookup" class="navbtn">Look Up</a>
+                <a href="#" class="navbtn">About</a>
                 <a href="#" class="navbtn">Report</a>
-                <a href="#" class="navbtn">Report Bug</a>
                 <a href="#" class="navbtn">Contact</a><br><br><br><br>
                 <div class="cpyright" align="center"> Powered by <a align="center" class='cpyright'
                         href="https://github.com/Akshay-Vs/Catheriens" target="_blank">GitHub</a></div>
@@ -95,7 +96,15 @@
                 <p>Hateful</p>
             </div>
         </div>
+
     </div>
+
+    <!---Search Popup--->
+    <div class="container" id="search">
+        <input id="text" type="number" placeholder="Lookup userID">
+        <div class="search" id="search-submit"></div>
+    </div>
+
 
     <footer>
         <div class="cpyright">
@@ -103,6 +112,7 @@
         </div>
     </footer>
     <script src="app.js"></script>
+    <script src="scripts/searchbar.js"></script>
 
 </body>
 
