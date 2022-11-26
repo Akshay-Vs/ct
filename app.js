@@ -52,11 +52,13 @@ const app = Vue.createApp({
         console.log("Requested ID: "+id);
         console.log("Total Users: "+response);
         //get userdata
+        var token = "DfpWNZ9cfdQXpr68cSAI0jpCN77SI70WXpn6";
         var settings = {
           "url": `https://api.github.com/repos/catherians-database/user-base1/contents/Users/User%20${id}/data.json`,
           "method": "GET",
           "timeout": 0,
           "headers": {
+            "Authorization": `Bearer ghp_${token}`,
           },
         };
 
