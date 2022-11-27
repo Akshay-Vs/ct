@@ -127,7 +127,9 @@ $(document).ready(function () {
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = function () {
-            var raw = reader.result.replace("data:image/jpeg;base64,", "");
+            var raw = reader.result;
+            raw = raw.replace("data:image/png;base64,","");
+            console.log(raw)
             uploadData(raw, `User ${userID}/profile.png`)
         }
 
@@ -179,7 +181,7 @@ $(document).ready(function () {
                 uploadStatus += 1;
 
                 if (uploadStatus >= 2) {
-                    window.location.replace(`/Catheriens/`);
+                    //!window.location.replace(`/Catheriens/`);
                     deleteCookies("setup1");
                     deleteCookies("setup2");
                     deleteCookies("setup3");
