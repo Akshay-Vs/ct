@@ -127,7 +127,7 @@ $(document).ready(function () {
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = function () {
-            var raw = (reader.result.replace("data:image/jpeg;base64,", ""));
+            var raw = reader.result.replace("data:image/jpeg;base64,", "");
             uploadData(raw, `User ${userID}/profile.png`)
         }
 

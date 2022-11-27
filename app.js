@@ -37,7 +37,7 @@ const app = Vue.createApp({
       $.ajax(settings).done(async function (response) {
 
         //get random user id except current user id
-        let id, temp, current = Math.floor(Math.random() * (response));
+        let id, temp, current = 15//Math.floor(Math.random() * (response));
 
         temp = window.localStorage.getItem("temp");
         if (temp == current) {
@@ -82,7 +82,7 @@ const app = Vue.createApp({
           console.log("User " + res.UserID);
 
           //Get proflile.png
-          picture = `https://raw.githubusercontent.com/catherians-database/user-base1/main/Users/User%20${id}/profile.png`
+          picture = (`https://raw.githubusercontent.com/catherians-database/user-base1/main/Users/User%20${id}/profile.png`)
 
         });
 
