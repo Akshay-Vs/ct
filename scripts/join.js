@@ -129,7 +129,7 @@ $(document).ready(function () {
         reader.onloadend = function () {
             var raw = reader.result;
             raw = raw.replace("data:image/png;base64,","");
-            console.log(raw)
+            //console.log(raw)
             uploadData(raw, `User ${userID}/profile.png`)
         }
 
