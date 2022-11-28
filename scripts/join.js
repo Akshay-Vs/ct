@@ -182,7 +182,7 @@ $(document).ready(function () {
                 uploadStatus += 1;
 
                 if (uploadStatus >= 2) {
-                   //! window.location.replace(`/Catheriens/`);
+                   window.location.replace(`/Catheriens/`);
                     deleteCookies("setup1");
                     deleteCookies("setup2");
                     deleteCookies("setup3");
