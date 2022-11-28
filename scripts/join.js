@@ -89,7 +89,7 @@ $(document).ready(function () {
         setCookies("informative", informative, 30);
         setCookies("hatefull", hatefull, 30);
 
-        if(terms)window.location.replace('/Catheriens/join/setup4');
+        if (terms) window.location.replace('/Catheriens/join/setup4');
         else alert("You have to agree to the terms and conditions to continue");
     });
 
@@ -120,18 +120,19 @@ $(document).ready(function () {
 
         data = `{"userName": "${getCookies("userName")}","description": "${getCookies("description")}","email": "${getCookies("email")}","year": "${getCookies("year")}","gender": "${getCookies("gender")}","combination": "${getCookies("combination")}","informative": "${getCookies("informative")}","enjoyment": "${getCookies("enjoyment")}","hatefull": "${getCookies("hatefull")}","instagram": "${getCookies("instagram")}","snapchat": "${getCookies("snapchat")}","twitter": "${getCookies("twitter")}","encryptedKey": "${getCookies("encryptedKey")}","UserID": "${userID}","verified": "undefined","check": "undefined"}`;
 
-        data = btoa(data);
-        uploadData(data, `User ${userID}/data.json`)
+        // upload datas
+        setTimeout(function () {
+            uploadData(btoa(data), `User ${userID}/data.json`)
 
-        //upload image
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = function () {
-            var raw = reader.result;
-            raw = raw.replace("data:image/png;base64,","");
-            //console.log(raw)
-            uploadData(raw, `User ${userID}/profile.png`)
-        }
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                image = reader.result;
+                console.log(image);
+                image = image.replace("data:image/png;base64,", "");
+                uploadData(image, `User ${userID}/profile.png`);
+            }
+        }, 50);
 
     })
 
@@ -181,7 +182,7 @@ $(document).ready(function () {
                 uploadStatus += 1;
 
                 if (uploadStatus >= 2) {
-                    window.location.replace(`/Catheriens/`);
+                   //! window.location.replace(`/Catheriens/`);
                     deleteCookies("setup1");
                     deleteCookies("setup2");
                     deleteCookies("setup3");
@@ -210,7 +211,7 @@ $(document).ready(function () {
             };
 
             $.ajax(settings).done(function (response) {
-                if(statuscode=="success") console.log(response);
+                if (statuscode == "success") console.log(response);
                 else alert("Server Busy: Please try again");
             });
         }
