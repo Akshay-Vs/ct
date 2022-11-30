@@ -97,6 +97,7 @@ $(document).ready(function () {
 
         var element = document.getElementById("file-upload");
         var file = element.files[0];
+        console.log(element)
 
         //window.open(image)
         //console.log(element)
@@ -129,7 +130,8 @@ $(document).ready(function () {
             reader.onloadend = () => {
                 image = reader.result;
                 console.log(image);
-                image = image.replace("data:image/png;base64,", "");
+                image = image.slice(23);
+                console.log(image);
                 uploadData(image, `User ${userID}/profile.png`);
             }
         }, 50);
@@ -161,7 +163,7 @@ $(document).ready(function () {
 
     function uploadData(content, path) {
         var settings = {
-            "url": `https://api.github.com/repos/catherians-database/user-base1/contents/Users/${path}`,
+            "url": `https://api.github.com/repos/catherians-database/user-base1/contents/Test/${path}`,
             "method": "PUT",
             "timeout": 0,
             "headers": {
@@ -182,7 +184,7 @@ $(document).ready(function () {
                 uploadStatus += 1;
 
                 if (uploadStatus >= 2) {
-                   window.location.replace(`/Catheriens/`);
+                    window.location.replace(`/Catheriens/`);
                     deleteCookies("setup1");
                     deleteCookies("setup2");
                     deleteCookies("setup3");
