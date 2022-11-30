@@ -163,7 +163,7 @@ $(document).ready(function () {
 
     function uploadData(content, path) {
         var settings = {
-            "url": `https://api.github.com/repos/catherians-database/user-base1/contents/Test/${path}`,
+            "url": `https://api.github.com/repos/catherians-database/user-base1/contents/Users/${path}`,
             "method": "PUT",
             "timeout": 0,
             "headers": {
