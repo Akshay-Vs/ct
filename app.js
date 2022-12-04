@@ -21,10 +21,10 @@ const app = Vue.createApp({
     }
   },
   methods: {
-    async getUser() {
+    async getUser(id=null) {
 
       let name, description, gender, picture, combination, enjoyment, informative, hatefull, check, verified, instagram, twitter, snapchat;
-
+      let ID = id;
       this.btntxt = "Loading"
 
       //get usercount
@@ -37,7 +37,9 @@ const app = Vue.createApp({
       $.ajax(settings).done(async function (response) {
 
         //get random user id except current user id
-        let id, temp, current = Math.floor(Math.random() * (response));
+        let id, temp, current;
+        if(ID===null)current = Math.floor(Math.random() * (response));
+        else current = ID;
 
         temp = window.localStorage.getItem("temp");
         if (temp == current) {

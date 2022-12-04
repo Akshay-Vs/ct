@@ -20,6 +20,10 @@ $(document).ready(function () {
         else window.location.replace('/Catheriens/join/setup1/');
     })
 
+    $('#about').click(()=> window.location.replace('/Catheriens/about/'));
+    $('#report').click(()=> window.open('https://github.com/Akshay-Vs/Catheriens/issues/new', '_blank'));
+    $('#contact').click(()=> window.open('/Catheriens/contact/', '_blank'));
+
     $('#next1').click(function () {
         userName = $("#name").val();
         description = $("#description").val();
