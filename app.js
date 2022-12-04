@@ -121,7 +121,7 @@ const app = Vue.createApp({
             this.enjoyment = enjoyment + " %",
             this.hatefull = hatefull + " %",
             this.twitter = "https://twitter.com/" + twitter,
-            this.snapchat = "https://snapchat.com/add" + snapchat,
+            this.snapchat = "https://snapchat.com/add/" + snapchat,
             this.instagram = "https://www.instagram.com/" + instagram;
           if (this.gender == "male") this.shadow = "blue"
           else if (this.gender == "female") this.shadow = "pink";
